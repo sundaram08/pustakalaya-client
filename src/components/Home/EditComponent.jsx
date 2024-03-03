@@ -42,7 +42,7 @@ const EditComponent = ({bookId,onClose}) => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await fetch(`https://pustakalaya-api.vercel.app/${bookId}`, {
+          const response = await fetch(`https://pustakalaya-api.vercel.app/books/${bookId}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
