@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import { store } from './app/store.js'
 import WebFont from 'webfontloader';
 import Add from './components/Add/Add.jsx'
+import SignUp from './components/Home/SignUp.jsx'
 WebFont.load({
   google: {
     families: ['Roboto', 'Open Sans','Mathilga','San Francisco']
@@ -28,8 +29,8 @@ const router = createBrowserRouter([{
       element: <Add/>
     },
     {
-      path:"/user",
-      element:<UserPage/>
+      path:"/signup",
+      element:<SignUp/>
     },
     {}
   ]

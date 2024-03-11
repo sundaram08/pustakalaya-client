@@ -4,6 +4,7 @@ const initialState = {
     books: [],
     selectedCategory: 'all',
     searchedText: null,
+    token:  localStorage.getItem('jwtToken') || null 
   };
 
   export const bookSlice = createSlice({
@@ -22,9 +23,18 @@ const initialState = {
       
         state.searchedText = searchText;
       },
+      setToken: (state, action) => {
+        const token = action.payload;
+        state.token = token;
+        localStorage.setItem('jwtToken', token); 
+      },
+      clearToken: (state) => {
+        state.token = null;
+        localStorage.removeItem('jwtToken'); 
+      }
     },
   });
   
-  export const { setSliceBooks, setCategory,searchBooks } = bookSlice.actions;
+  export const { setSliceBooks, setCategory,searchBooks,setToken } = bookSlice.actions;
   export default bookSlice.reducer;
   

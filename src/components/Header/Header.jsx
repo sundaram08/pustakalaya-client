@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchBooks, setCategory } from '../../features/bookSlice';
 
 
+
 function Header() {
   const dispatch  = useDispatch();
+  const token = useSelector((state) => state.book.token);
   const handleSearch = (e) => {
     e.preventDefault();
   
@@ -33,15 +35,19 @@ function Header() {
         <div className='' style={{width:'15vw',height:'5vh',left:'80vw',top:'2vh',position:'absolute'}}>
           <div className='' style={{width:'7vw',height:'5vh',left:'',top:'',position:'absolute'}}>
             <Link to="/new">
-            <h1 className='shadow-lg' style={{fontSize:'1.7vh',left:'2vw',position:'absolute'}}>Add</h1>
+            <h1 className='shadow-lg' style={{fontSize:'1.7vh',left:'2vw',position:'absolute'}}>Book+</h1>
             </Link>
           </div>
           <div className='' style={{width:'7vw',height:'5vh',left:'8vw',top:'',position:'absolute'}}>
-            <Link to="/user">
-            <h1 className='' style={{fontSize:'1.7vh'}}>
-              User
-            </h1>
-            </Link>
+            {token ? (
+                <h1 className='' style={{fontSize:'1.7vh'}}>
+                    <Link to="/logout">Logout</Link>
+                </h1>
+            ) : (
+                <h1 className='' style={{fontSize:'1.7vh'}}>
+                    <Link to="/signup">SignUp</Link>
+                </h1>
+            )}
           </div>    
         </div>
         <h1  onClick={() => handleCategoryClick('all')} className='underline cursor-pointer' style={{position:'absolute',left:'10vw',top:'10vh',width:'10vw',fontSize:'1.3vh'}}>
