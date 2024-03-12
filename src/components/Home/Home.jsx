@@ -24,22 +24,32 @@ const Home = () => {
 
   const handleDelete= async  (id) =>{
       try {
+        const userToken = useSelector((state)=>state.book.userToken)
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`
+        };
         const response = await fetch(`https://pustakalaya-api.vercel.app/books/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: headers 
         });
         if (response) {
           alert(`Book deleted successfully.`);
           fetchData()
       } else {
-          alert(`Failed to delete book`);
+        const errorMessage = await response.text(); // Extract error message from response
+        throw new Error(errorMessage || 'Failed to delete book');
       }
-      } catch (error) {
-        console.log('Error:',error)
-      }
+    } catch (error) {
+      console.error('Error deleting book:', error);
+      alert('An error occurred while deleting the book. Please try again later.');
+    }
   }
   const fetchData = async () => {
       try {
-        const response = await fetch('https://pustakalaya-api.vercel.app/books');
+        const response = await fetch('https://pustakalaya-api.vercel.app/books',{
+
+      });
         const data = await response.json();
         setBooks(data);
         dispatch(setSliceBooks(data))

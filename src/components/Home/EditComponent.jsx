@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const EditComponent = ({bookId,onClose}) => {
   const [formData, setFormData] = useState({
@@ -9,11 +10,15 @@ const EditComponent = ({bookId,onClose}) => {
     publishYear:'',
     category:''
   });
-
+  const userToken = localStorage.getItem('jwtToken');
     useEffect(() => {
         const fetchBookData = async () => {
           try {
-            const response = await fetch(`https://pustakalaya-api.vercel.app/books/${bookId}`);
+            const response = await fetch(`https://pustakalaya-api.vercel.app/books/${bookId}`,{
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            })
             const data = await response.json();
             if (data && typeof data === 'object') {
               setFormData({
@@ -46,6 +51,7 @@ const EditComponent = ({bookId,onClose}) => {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
+              'Authorization': `Bearer ${userToken}`
             },
             body: JSON.stringify(formData),
           });

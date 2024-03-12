@@ -19,7 +19,7 @@ const SignUp = () => {
   const handleSignUp = async (e)=>{
     e.preventDefault();
         try {
-          const response = await fetch(`http://localhost:4000/books/signup`, {
+          const response = await fetch(`https://pustakalaya-api.vercel.app/books/signup`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const SignUp = () => {
   }
   const handleSignIn = async ()=>{
         try {
-          const response = await fetch(`http://localhost:4000/books/login`, {
+          const response = await fetch(`http://pustakalaya-api.vercel.app/books/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

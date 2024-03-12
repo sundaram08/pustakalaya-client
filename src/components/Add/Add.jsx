@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Add = () => {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const Add = () => {
           const response = await fetch(`https://pustakalaya-api.vercel.app/books`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData),
           });
