@@ -21,10 +21,9 @@ const Home = () => {
     setEditBookId(null);
     fetchData(); 
   };
-
+  const userToken = localStorage.getItem('jwtToken');
   const handleDelete= async  (id) =>{
       try {
-        const userToken = useSelector((state)=>state.book.userToken)
         const headers = {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${userToken}`
