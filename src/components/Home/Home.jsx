@@ -36,7 +36,7 @@ const Home = () => {
           alert(`Book deleted successfully.`);
           fetchData()
       } else {
-        const errorMessage = await response.text(); // Extract error message from response
+        const errorMessage = await response.text();
         throw new Error(errorMessage || 'Failed to delete book');
       }
     } catch (error) {
