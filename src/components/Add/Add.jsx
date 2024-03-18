@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const Add = () => {
     const navigate = useNavigate()
+    const userToken = localStorage.getItem('jwtToken');
     const [formData, setFormData] = useState({
         title:null,
         author:null,
@@ -23,7 +24,8 @@ const Add = () => {
           const response = await fetch(`https://pustakalaya-api.vercel.app/books`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${userToken}`
             },
             body: JSON.stringify(formData),
           });
