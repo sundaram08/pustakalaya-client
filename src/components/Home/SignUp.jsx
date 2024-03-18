@@ -50,7 +50,7 @@ const SignUp = () => {
             body: JSON.stringify(formData),
           });
           if (response.ok) {
-            console.log('User created successfully');
+            console.log('User loggedIn successfully');
             const data = await response.json();
             const token = data.token;
             dispatch(setToken(token));
