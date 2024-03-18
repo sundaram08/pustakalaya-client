@@ -39,8 +39,7 @@ const SignUp = () => {
           setError('Failed to create user. Please try again.');
         }
   }
-  const handleSignIn = async (e)=>{
-    e.preventDefault();
+  const handleSignIn = async ()=>{
         try {
           const response = await fetch(`https://pustakalaya-api.vercel.app/books/login`, {
             method: 'POST',
