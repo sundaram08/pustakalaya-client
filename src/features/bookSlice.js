@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 const storedToken = localStorage.getItem('jwtToken');
+const localUser = localStorage.getItem('userID');
 const initialState = {
     books: [],
     selectedCategory: 'all',
     searchedText: null,
-    token: storedToken ? storedToken : null
+    token: storedToken ? storedToken : null,
+    user_id: localUser ? localUser : null
   };
 
   export const bookSlice = createSlice({
@@ -31,10 +33,19 @@ const initialState = {
       clearToken: (state) => {
         state.token = null;
         localStorage.removeItem('jwtToken'); 
+      },
+      setUserId: (state,action)=>{
+        const user = action.payload;
+        state.user_id = user;
+        localStorage.setItem('userID',user);
+      },
+      clearUserId:(state)=>{
+        state.user_id=null;
+        localStorage.removeItem('userID');
       }
     },
   });
   
-  export const { setSliceBooks, setCategory,searchBooks,setToken,clearToken } = bookSlice.actions;
+  export const { setSliceBooks, setCategory,searchBooks,setToken,clearToken,setUserId,clearUserId } = bookSlice.actions;
   export default bookSlice.reducer;
   

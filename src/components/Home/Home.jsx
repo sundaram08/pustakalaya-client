@@ -41,7 +41,7 @@ const Home = () => {
       }
     } catch (error) {
       console.error('Error deleting book:', error);
-      alert('An error occurred while deleting the book. Please try again later.');
+      alert('An error occurred while deleting the book.Make sure you are logged in.');
     }
   }
   const fetchData = async () => {
@@ -61,7 +61,34 @@ const Home = () => {
       fetchData();
     }, [dispatch]);  
 
-
+    const handleAddToFav = async (bookId) => {
+      let userId = localStorage.getItem('userID');
+  
+      try {
+          const response = await fetch('https://pustakalaya-api.vercel.app/books/user/fav', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json' 
+              },
+              body: JSON.stringify({ 
+                  userId: userId,
+                  bookId: bookId
+              })
+          });
+  
+          if (response.ok) { 
+              const data = await response.json(); 
+              alert('Book successfully added to Favorites');
+          } else {
+              const errorData = await response.json();
+              throw new Error(errorData.message);
+          }
+      } catch (error) {
+          console.error('Error adding book to Favorites:', error.message);
+          alert('Failed to add book to Favorites. Please try again later.');
+      }
+  };
+  
     const filteredBooks = (searchedText && searchedText.trim() !== '')
     ? (selectedCategory === 'all'
       ? allBooks.filter(book => 
@@ -93,6 +120,7 @@ const Home = () => {
             <p className="text-gray-700 mt-2"style={{fontSize:'1.5vh'}}>{book.publishYear}</p>
             <div className="mt-4 flex justify-between">
               <button onClick={() => handleEditClick(book._id)} className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded">Edit</button>
+              <button onClick={() => handleAddToFav(book._id)} className="bg-yellow-500 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded">Add to Fav</button>
               <button onClick={() => handleDelete(book._id)} className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">Delete</button>
             </div>
           </li>

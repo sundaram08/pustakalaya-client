@@ -11,7 +11,7 @@ import { store } from './app/store.js'
 import WebFont from 'webfontloader';
 import Add from './components/Add/Add.jsx'
 import SignUp from './components/Home/SignUp.jsx'
-import LogOut from './components/Home/LogOut.jsx'
+import User from './components/Home/User.jsx'
 WebFont.load({
   google: {
     families: ['Roboto', 'Open Sans','Mathilga','San Francisco']
@@ -34,8 +34,8 @@ const router = createBrowserRouter([{
       element:<SignUp/>
     },
     {
-      path:"/logout",
-      element:<LogOut/>
+      path:"/user",
+      element:<User/>
     }
   ]
 }])

@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import { setToken } from '../../features/bookSlice';
+import { setUserId } from '../../features/bookSlice';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         username:'',
@@ -30,6 +33,7 @@ const SignUp = () => {
             console.log('User created successfully');
             handleSignIn()
             setError(null);
+            navigate('/user')
           }
           else{
             throw new Error('Failed to create user');
@@ -49,23 +53,25 @@ const SignUp = () => {
             body: JSON.stringify(formData),
           });
           if (response.ok) {
-            console.log('User loggedIn successfully');
+            console.log('Successfully Signed In');
             const data = await response.json();
             const token = data.token;
+            const id = data.id;
             dispatch(setToken(token));
-            console.log(token);
+            dispatch(setUserId(id));
             setFormData({
             username: '',
             password: '',
             });
             setError(null);
+            navigate("/user");
         }
         else{
-            throw new Error('Failed to create user');
+            throw new Error('Failed to sign in');
         }
         } catch (error) {
           console.error('Error submitting data:', error);
-          setError('Failed to create user. Please try again.');
+          setError('Failed to sign in. Please try again.');
         }
   }    
   return (

@@ -41,7 +41,7 @@ function Header() {
           <div className='' style={{width:'7vw',height:'5vh',left:'8vw',top:'',position:'absolute'}}>
             {token ? (
                 <h1 className='' style={{fontSize:'1.7vh'}}>
-                    <Link to="/logout">Logout</Link>
+                    <Link to="/user">User</Link>
                 </h1>
             ) : (
                 <h1 className='' style={{fontSize:'1.7vh'}}>
