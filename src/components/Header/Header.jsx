@@ -47,7 +47,7 @@ function Header() {
                 </Link>
             ) : (
                <Link  to="/signup">
-                <h1 className='text-sm lg:text-xl ml-6' style={{}}>
+                <h1 className='text-xs md:text-sm lg:text-xl ml-4' style={{}}>
                     SignUp
                 </h1>
                 </Link>

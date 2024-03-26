@@ -112,6 +112,12 @@ const Home = () => {
  
   return (
     <div className='bg-gray-300' style={{ height: '100vh', width: '100vw', position: 'relative',top:'0.1vh' }}>
+      {userToken ? (
+  null
+) : (
+  <h1 className='grid place-items-center text-red-500 custom-text md:text-sm lg:text-lg p-2'>Make sure you are Logged in for full functionality!</h1>
+)}
+
       <ul className="" style={{ width: '80vw', height: '80vh', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', position: 'absolute', overflowY: 'auto' }}>
         {filteredBooks.map((book) => (
           <li key={book._id} className="bg-gray-400 rounded-lg p-2 mb-2">
