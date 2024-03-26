@@ -119,9 +119,9 @@ const Home = () => {
             <p className="text-gray-700" style={{fontSize:'1.5vh'}}>{book.author}</p>
             <p className="text-gray-700 mt-2"style={{fontSize:'1.5vh'}}>{book.publishYear}</p>
             <div className="mt-4 flex justify-between">
-              <button onClick={() => handleEditClick(book._id)} className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded">Edit</button>
-              <button onClick={() => handleAddToFav(book._id)} className="bg-yellow-500 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded">Add to Fav</button>
-              <button onClick={() => handleDelete(book._id)} className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">Delete</button>
+              <button onClick={() => handleEditClick(book._id)} className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded text-sm lg:text-lg">Edit</button>
+              <button onClick={() => handleAddToFav(book._id)} className="bg-yellow-500 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded text-sm lg:text-lg">Add to Fav</button>
+              <button onClick={() => handleDelete(book._id)} className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded text-sm  lg:text-lg">Delete</button>
             </div>
           </li>
         ))}

@@ -9,7 +9,7 @@ const Add = () => {
         title:null,
         author:null,
         publishYear:null,
-        category:null
+        category:null,
     });
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -39,7 +39,7 @@ const Add = () => {
         }
     }; 
   return (
-    <div className='bg-gray-300' style={{width:'100vw',height:'86vh'}}>
+    <div className='bg-gray-300' style={{width:'100vw',height:'100vh'}}>
         <div className="bg-gray-300 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div className="sm:flex sm:items-start border" style={{width:"60vw",left:'20vw',position:'relative',top:'10vh'}}>
               {/* Form */}
