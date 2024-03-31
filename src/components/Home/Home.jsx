@@ -124,6 +124,7 @@ const Home = () => {
             <h2 className="font-semibold mb-2" style={{fontSize:'1.5vh'}}>{book.title}</h2>
             <p className="text-gray-700" style={{fontSize:'1.5vh'}}>{book.author}</p>
             <p className="text-gray-700 mt-2"style={{fontSize:'1.5vh'}}>{book.publishYear}</p>
+            <a href={book.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline" style={{fontSize:'1.5vh'}}>View PDF</a>
             <div className="mt-4 flex justify-between">
               <button onClick={() => handleEditClick(book._id)} className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded text-sm lg:text-lg">Edit</button>
               <button onClick={() => handleAddToFav(book._id)} className="bg-yellow-500 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded text-sm lg:text-lg">Add to Fav</button>

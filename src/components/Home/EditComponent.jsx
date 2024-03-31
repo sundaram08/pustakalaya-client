@@ -8,7 +8,8 @@ const EditComponent = ({bookId,onClose}) => {
     title:'',
     author:'',
     publishYear:'',
-    category:''
+    category:'',
+    pdfUrl:''
   });
   const userToken = localStorage.getItem('jwtToken');
     useEffect(() => {
@@ -25,7 +26,8 @@ const EditComponent = ({bookId,onClose}) => {
                 title: data.title || '',
                 author: data.author || '',
                 publishYear: data.publishYear || '',
-                category: data.category || ''
+                category: data.category || '',
+                pdfUrl: data.pdfUrl || ''
               });
             } else {
               console.error('Invalid book data:', data);
@@ -143,6 +145,20 @@ const EditComponent = ({bookId,onClose}) => {
                     value={formData.category}
                     onChange={handleInputChange}
                     placeholder="Category"
+                  />
+                </div>
+                <div className="mb-6">
+                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
+                    PDF Url
+                  </label>
+                  <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="category"
+                    type="text"
+                    name="category"
+                    value={formData.pdfUrl}
+                    onChange={handleInputChange}
+                    placeholder="pdfUrl"
                   />
                 </div>
               </form>

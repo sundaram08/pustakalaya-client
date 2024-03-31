@@ -10,6 +10,7 @@ const Add = () => {
         author:null,
         publishYear:null,
         category:null,
+        pdfFile: null
     });
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -18,19 +19,33 @@ const Add = () => {
           [name]: value,
         });
     };
+    const handleFileChange = (e) => {
+      const file = e.target.files[0];
+      setFormData({
+          ...formData,
+          pdfFile: file
+      });
+  };
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+          const formDataWithFile = new FormData();
+          formDataWithFile.append('title', formData.title);
+          formDataWithFile.append('author', formData.author);
+          formDataWithFile.append('publishYear', formData.publishYear);
+          formDataWithFile.append('category', formData.category);
+          formDataWithFile.append('pdf', formData.pdfFile); // Append the file
+          
           const response = await fetch(`https://pustakalaya-api.vercel.app/books`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${userToken}`
-            },
-            body: JSON.stringify(formData),
+              method: 'POST',
+              headers: {
+                  'Authorization': `Bearer ${userToken}`,
+              },
+              body: formDataWithFile, // Send FormData object instead of JSON string
           });
           if (!response.ok) {
-            throw new Error('Failed to submit data');
+            const errorMessage = await response.text();
+            throw new Error(`Failed to submit data: ${errorMessage}`);
           }
           console.log('Data submitted successfully');
           navigate("/")
@@ -100,6 +115,19 @@ const Add = () => {
                     placeholder="Category"
                   />
                 </div>
+                <div className="mb-6">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pdfFile">
+                                PDF File
+                            </label>
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="pdfFile"
+                                type="file"
+                                accept=".pdf" // Allow only PDF files
+                                name="pdf"
+                                onChange={handleFileChange}
+                            />
+                        </div>
                 <div className="flex">
             <button
               type="submit"
@@ -110,8 +138,7 @@ const Add = () => {
           </div>
               </form>
             </div>
-        </div>
-        
+        </div> 
     </div>
   )
 }

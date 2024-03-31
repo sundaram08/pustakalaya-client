@@ -58,6 +58,7 @@ const User = () => {
                 <h2 className="font-semibold mb-2 text-l">{book.title}</h2>
                 <p className="text-gray-700 text-base">{book.author}</p>
                 <p className="text-gray-700 mt-2 text-base">{book.publishYear}</p>
+               <a href={book.pdfUrl} className='text-red-800 text-sm'>View PDF</a>
                 <div className="mt-4 flex justify-between">             
                     <button onClick={() => handleRemove(book._id)} className="border border-black
                      text-gray-300 shadow font-bold py-2 px-4 rounded">Remove</button>
