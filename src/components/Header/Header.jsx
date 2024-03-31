@@ -20,7 +20,7 @@ function Header() {
     <header className=' shadow-md bg-gray-300' style={{width:'100vw',height:'14vh',position:'relative'}}>
         <div className='' style={{width:'10vw',height:'5vh',top:'2vh',left:'3vw',position:'absolute'}}>
            <Link to="/" >
-           <h1 className='text-sm md:text-xl lg:text-3xl' style={{position:'absolute',left:'2vw'}}>पुस्तकालय</h1>
+           <h1 className='text-sm md:text-xl lg:text-3xl shadow-md hover:shadow-none' style={{position:'absolute',left:'2vw'} }>पुस्तकालय</h1>
            </Link> 
         </div>
         <div className='w-30% lg:w-50%' style={{height:'5vh',left:'23vw',top:'2vh',position:'absolute'}}>

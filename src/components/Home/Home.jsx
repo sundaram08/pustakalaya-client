@@ -118,16 +118,16 @@ const Home = () => {
   <h1 className='grid place-items-center text-red-500 custom-text md:text-sm lg:text-lg p-2'>Make sure you are Logged in for full functionality!</h1>
 )}
 
-      <ul className="" style={{ width: '80vw', height: '80vh', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', position: 'absolute', overflowY: 'auto' }}>
+      <ul className="flip-card" style={{ width: '80vw', height: '80vh', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', position: 'absolute', overflowY: 'auto' }}>
         {filteredBooks.map((book) => (
-          <li key={book._id} className="bg-gray-400 rounded-lg p-2 mb-2">
+          <li key={book._id} className="bg-gray-400 rounded-lg p-2 mb-2 animate-slide-left">
             <h2 className="font-semibold mb-2" style={{fontSize:'1.5vh'}}>{book.title}</h2>
             <p className="text-gray-700" style={{fontSize:'1.5vh'}}>{book.author}</p>
             <p className="text-gray-700 mt-2"style={{fontSize:'1.5vh'}}>{book.publishYear}</p>
             <a href={book.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline" style={{fontSize:'1.5vh'}}>View PDF</a>
             <div className="mt-4 flex justify-between">
               <button onClick={() => handleEditClick(book._id)} className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded text-sm lg:text-lg">Edit</button>
-              <button onClick={() => handleAddToFav(book._id)} className="bg-yellow-500 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded text-sm lg:text-lg">Add to Fav</button>
+              <button onClick={() => handleAddToFav(book._id)} className="hover:transition-all duration-300 ease-in-out  bg-yellow-500 hover:bg-gray-200 hover:text-gray-800 text-white font-bold py-2 px-4 rounded text-sm lg:text-lg">Add to Fav</button>
               <button onClick={() => handleDelete(book._id)} className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded text-sm  lg:text-lg">Delete</button>
             </div>
           </li>

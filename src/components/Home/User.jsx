@@ -54,7 +54,7 @@ const User = () => {
 
     <ul className="w-10/12 max-w-lg flex-1 overflow-y-auto mb-8">
         {favBooks && favBooks.map((book) => (
-            <li key={book._id} className="bg-gray-400 rounded-lg p-2 mb-2">
+            <li key={book._id} className="bg-gray-400 rounded-lg p-2 mb-2 animate-slide-right">
                 <h2 className="font-semibold mb-2 text-l">{book.title}</h2>
                 <p className="text-gray-700 text-base">{book.author}</p>
                 <p className="text-gray-700 mt-2 text-base">{book.publishYear}</p>
