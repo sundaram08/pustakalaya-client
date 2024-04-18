@@ -1,0 +1,19 @@
+{
+    "routes":[
+        { "src": "",
+          "dest":"/" 
+        },
+        {
+          "src":"/new",
+          "dest":"/" 
+        },
+        {
+          "src":"/signup",
+          "dest":"/"
+        },
+        {
+          "src":"/user",
+          "dest":"/"
+        }
+      ]
+}
